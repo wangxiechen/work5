@@ -1,0 +1,25 @@
+spring:
+  application:
+    name: order-service
+server:
+  port: 8080
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:10086/eureka
+    fetch-registry: true #不从注册中心拉取注册表
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 5000
+feign:
+  hystrix:
+    enabled: true  #开启Feign的熔断功能
+  client:
+    config:
+      default:
+        connectTimeout: 5000
+        readTimeout: 5000
